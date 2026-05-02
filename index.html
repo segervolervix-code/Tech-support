@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TechEase Support Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="TechEase Support Center - quick fixes, troubleshooting guides, and live chat support for all your tech issues."
+  />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #3b82f6;
+      --accent-soft: rgba(59, 130, 246, 0.15);
+      --accent-strong: #2563eb;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --danger: #f97373;
+      --success: #4ade80;
+      --border: #1f2937;
+      --card-bg: #0f172a;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
+      --radius-lg: 14px;
+      --radius-md: 10px;
+      --radius-pill: 999px;
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.25s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+
+    /* Top bar / nav */
+
+    .top-shell {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.96),
+        rgba(15, 23, 42, 0.85),
+        transparent
+      );
+      border-bottom: 1px solid rgba(31, 41, 55, 0.7);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 0, #60a5fa, #1d4ed8 40%, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.25),
+        0 18px 40px rgba(15, 23, 42, 0.9);
+    }
+
+    .brand-logo span {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .brand-text h1 {
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .brand-text p {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: background var(--transition-fast),
+        color var(--transition-fast), border-color var(--transition-fast),
+        transform var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: rgba(55, 65, 81, 0.9);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-cta button {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: radial-gradient(circle at 0 0, #1d4ed8, #020617 55%);
+      color: #e5e7eb;
+      padding: 0.45rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.9);
+      transition: transform var(--transition-med),
+        box-shadow var(--transition-med), background var(--transition-med);
+    }
+
+    .nav-cta button span.icon {
+      font-size: 1rem;
+    }
+
+    .nav-cta button:hover {
+      transform: translateY(-1px);
+      background: radial-gradient(circle at 0 0, #2563eb, #020617 60%);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 1);
+    }
+
+    .nav-cta small {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    /* Layout grid */
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 1.75rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Hero / main panel */
+
+    .hero {
+      background: radial-gradient(circle at top left, #1d4ed8 0, #020617 55%);
+      border-radius: 24px;
+      padding: 1.75rem 1.6rem 1.6rem;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(59, 130, 246, 0.18), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(56, 189, 248, 0.12), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: #e5e7eb;
+      font-size: 0.72rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-kicker span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--success);
+      box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.25);
+    }
+
+    .hero-title {
+      font-size: 2rem;
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(to right, #bfdbfe, #e5e7eb);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: #d1d5db;
+      max-width: 32rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.72rem;
+      color: #e5e7eb;
+    }
+
+    .hero-meta-item span.badge {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #22c55e, #16a34a 55%, #052e16);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-actions button {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      padding: 0.55rem 1.2rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: transform var(--transition-med),
+        box-shadow var(--transition-med), background var(--transition-med),
+        border-color var(--transition-med), color var(--transition-med);
+    }
+
+    .hero-actions button.primary {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: #e5e7eb;
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.6);
+    }
+
+    .hero-actions button.primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 50px rgba(37, 99, 235, 0.75);
+      background: linear-gradient(135deg, #60a5fa, #2563eb);
+    }
+
+    .hero-actions button.secondary {
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 0.5);
+    }
+
+    .hero-actions button.secondary:hover {
+      transform: translateY(-1px);
+      background: rgba(15, 23, 42, 1);
+      border-color: rgba(209, 213, 219, 0.9);
+    }
+
+    .hero-actions button span.icon {
+      font-size: 1rem;
+    }
+
+    .hero-footnote {
+      font-size: 0.75rem;
+      color: #cbd5f5;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .hero-footnote strong {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .hero-footnote span.divider {
+      width: 1px;
+      height: 12px;
+      background: rgba(148, 163, 184, 0.6);
+    }
+
+    /* Hero right: quick diagnostics */
+
+    .hero-diagnostics {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 18px;
+      padding: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-diagnostics-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-diagnostics-header h2 {
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .hero-diagnostics-header span.status-pill {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.12);
+      color: #bbf7d0;
+      border: 1px solid rgba(34, 197, 94, 0.4);
+    }
+
+    .hero-diagnostics-body {
+      font-size: 0.8rem;
+      color: #d1d5db;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-diagnostics-body p {
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-diagnostics-body ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.25rem 0 0;
+    }
+
+    .hero-diagnostics-body li {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-diagnostics-body li span.bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.9);
+    }
+
+    .hero-diagnostics-steps {
+      margin-top: 0.5rem;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px dashed rgba(148, 163, 184, 0.5);
+      padding: 0.6rem 0.7rem;
+      font-size: 0.78rem;
+      color: #e5e7eb;
+    }
+
+    .hero-diagnostics-steps h3 {
+      font-size: 0.78rem;
+      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #bfdbfe;
+    }
+
+    .hero-diagnostics-steps ol {
+      margin-left: 1.1rem;
+      padding-left: 0;
+    }
+
+    .hero-diagnostics-steps li {
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-diagnostics-footer {
+      margin-top: 0.7rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      color: #9ca3af;
+    }
+
+    .hero-diagnostics-footer button {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+      padding: 0.25rem 0.7rem;
+      font-size: 0.72rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: background var(--transition-fast),
+        border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .hero-diagnostics-footer button:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: rgba(209, 213, 219, 0.9);
+      transform: translateY(-1px);
+    }
+
+    /* Quick fixes section */
+
+    .quick-fixes {
+      margin-top: 1.75rem;
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 1.75rem;
+    }
+
+    .quick-fixes-left {
+      background: var(--bg-alt);
+      border-radius: 20px;
+      padding: 1.4rem 1.3rem 1.3rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-header h2 {
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .section-header p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      max-width: 22rem;
+    }
+
+    .section-header .filter-tabs {
+      display: inline-flex;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 0.15rem;
+      gap: 0.15rem;
+    }
+
+    .section-header .filter-tabs button {
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.72rem;
+      padding: 0.25rem 0.7rem;
+      cursor: pointer;
+      transition: background var(--transition-fast),
+        color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .section-header .filter-tabs button.active {
+      background: rgba(37, 99, 235, 0.18);
+      color: #bfdbfe;
+      transform: translateY(-1px);
+    }
+
+    .quick-fix-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .quick-fix-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 0.8rem 0.8rem 0.75rem;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform var(--transition-med),
+        box-shadow var(--transition-med), border-color var(--transition-med),
+        background var(--transition-med);
+    }
+
+    .quick-fix-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+      border-color: rgba(59, 130, 246, 0.7);
+      background: radial-gradient(circle at top left, #0b1120, #020617 55%);
+    }
+
+    .quick-fix-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(59, 130, 246, 0.18), transparent 55%);
+      opacity: 0;
+      transition: opacity var(--transition-med);
+      pointer-events: none;
+    }
+
+    .quick-fix-card:hover::after {
+      opacity: 1;
+    }
+
+    .quick-fix-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+      margin-bottom: 0.35rem;
+    }
+
+    .quick-fix-label span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.9);
+    }
+
+    .quick-fix-title {
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+      color: #e5e7eb;
+    }
+
+    .quick-fix-body {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      margin-bottom: 0.4rem;
+    }
+
+    .quick-fix-steps {
+      font-size: 0.75rem;
+      color: #cbd5f5;
+    }
+
+    .quick-fix-steps span.step-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      margin-right: 0.3rem;
+      font-size: 0.7rem;
+      color: #bfdbfe;
+    }
+
+    .quick-fix-meta {
+      margin-top: 0.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+
+    .quick-fix-meta span.time {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .quick-fix-meta span.difficulty {
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    /* Right column: FAQ / system status */
+
+    .quick-fixes-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .panel {
+      background: var(--bg-alt);
+      border-radius: 18px;
+      padding: 1rem 1rem 0.9rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .panel-header h3 {
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .panel-header span.badge {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: #9ca3af;
+    }
+
+    .faq-list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.8rem;
+      color: #d1d5db;
+    }
+
+    .faq-item {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .faq-question span.q {
+      font-weight: 500;
+    }
+
+    .faq-question span.icon {
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    .faq-answer {
+      margin-top: 0.25rem;
+      font-size: 0.78rem;
+      color: #9ca3af;
+    }
+
+    .status-list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.78rem;
+      color: #d1d5db;
+    }
+
+    .status-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.4rem 0;
+      border-bottom: 1px dashed rgba(31, 41, 55, 0.9);
+    }
+
+    .status-item:last-child {
+      border-bottom: none;
+    }
+
+    .status-label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+    }
+
+    .status-dot.ok {
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    }
+
+    .status-dot.warn {
+      background: #facc15;
+      box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.25);
+    }
+
+    .status-dot.down {
+      background: #f97373;
+      box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.25);
+    }
+
+    .status-pill {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      color: #9ca3af;
+    }
+
+    /* Footer */
+
+    footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 2.5rem;
+      font-size: 0.78rem;
+      color: #6b7280;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      margin-top: 2rem;
+    }
+
+    footer a {
+      color: #9ca3af;
+    }
+
+    footer a:hover {
+      color: #e5e7eb;
+    }
+
+    /* Chat widget launcher hint */
+
+    .chat-hint {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.4rem;
+      pointer-events: none;
+    }
+
+    .chat-hint-bubble {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 14px;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 0.78rem;
+      color: #e5e7eb;
+      max-width: 220px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.95);
+      pointer-events: auto;
+    }
+
+    .chat-hint-bubble strong {
+      color: #bfdbfe;
+    }
+
+    .chat-hint-button {
+      pointer-events: auto;
+      border-radius: 999px;
+      width: 46px;
+      height: 46px;
+      border: none;
+      background: radial-gradient(circle at 30% 0, #3b82f6, #1d4ed8 55%, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e5e7eb;
+      font-size: 1.3rem;
+      cursor: pointer;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 1);
+      transition: transform var(--transition-med),
+        box-shadow var(--transition-med), filter var(--transition-med);
+    }
+
+    .chat-hint-button:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 22px 55px rgba(15, 23, 42, 1);
+      filter: brightness(1.05);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 960px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .quick-fixes {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 1.4rem 1.2rem 1.3rem;
+      }
+
+      .quick-fix-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="top-shell">
+    <div class="nav">
+      <div class="brand">
+        <div class="brand-logo">
+          <span>TE</span>
+        </div>
+        <div class="brand-text">
+          <h1>TechEase Support Center</h1>
+          <p>Instant diagnostics, human support when you need it.</p>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#quick-fixes">Quick fixes</a>
+        <a href="#faq">FAQ</a>
+        <a href="#status">System status</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-cta">
+        <button type="button" onclick="openSupportChat()">
+          <span class="icon">💬</span>
+          Chat with support
+        </button>
+        <small>Average response: &lt; 2 minutes</small>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="layout" aria-label="Tech support overview">
+      <!-- Hero / main content -->
+      <article class="hero">
+        <div class="hero-inner">
+          <div>
+            <div class="hero-kicker">
+              <span class="dot"></span>
+              Live support • 24/7 • Global
+            </div>
+            <h2 class="hero-title">
+              Fix your tech issues in
+              <span class="highlight">minutes</span>, not hours.
+            </h2>
+            <p class="hero-subtitle">
+              Start with our guided quick fixes, then escalate to a live agent if you still need help.
+              No jargon, no scripts—just clear steps that actually work.
+            </p>
+
+            <div class="hero-meta">
+              <div class="hero-meta-item">
+                <span class="badge">✓</span>
+                90% of issues resolved on first visit
+              </div>
+              <div class="hero-meta-item">
+                <span class="badge">⚡</span>
+                Smart device detection &amp; tailored steps
+              </div>
+              <div class="hero-meta-item">
+                <span class="badge">🛡</span>
+                Security-first troubleshooting
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <button class="primary" type="button" onclick="scrollToQuickFixes()">
+                <span class="icon">🚀</span>
+                Run quick fix checklist
+              </button>
+              <button class="secondary" type="button" onclick="openSupportChat()">
+                <span class="icon">👨‍💻</span>
+                Talk to a technician
+              </button>
+            </div>
+
+            <div class="hero-footnote">
+              <span><strong>Popular flows:</strong> Wi‑Fi not working, slow laptop, app keeps crashing, printer offline.</span>
+              <span class="divider"></span>
+              <span>Need something else? Use the chat widget in the corner.</span>
+            </div>
+          </div>
+
+          <!-- Quick diagnostics panel -->
+          <aside class="hero-diagnostics" aria-label="Quick diagnostics summary">
+            <div class="hero-diagnostics-header">
+              <h2>Smart pre-check</h2>
+              <span class="status-pill">Recommended first</span>
+            </div>
+            <div class="hero-diagnostics-body">
+              <p>Before you dive into detailed guides, confirm these basics:</p>
+              <ul>
+                <li>
+                  <span class="bullet"></span>
+                  Power cables and switches are firmly connected.
+                </li>
+                <li>
+                  <span class="bullet"></span>
+                  Your internet/router lights look normal (no blinking red).
+                </li>
+                <li>
+                  <span class="bullet"></span>
+                  You’ve tried turning the device off and on again.
+                </li>
+              </ul>
+            </div>
+            <div class="hero-diagnostics-steps">
+              <h3>1‑minute universal quick fix</h3>
+              <ol>
+                <li>Restart the affected device (phone, laptop, router, etc.).</li>
+                <li>Wait 30 seconds before turning it back on.</li>
+                <li>Check if the issue persists in a different app or website.</li>
+              </ol>
+            </div>
+            <div class="hero-diagnostics-footer">
+              <span>Still stuck after this? Jump into a tailored quick fix below.</span>
+              <button type="button" onclick="scrollToQuickFixes()">
+                View quick fixes
+                <span>↓</span>
+              </button>
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <!-- Right column: FAQ + status -->
+      <aside class="quick-fixes-right">
+        <section class="panel" id="faq" aria-label="Frequently asked questions">
+          <div class="panel-header">
+            <h3>Instant answers</h3>
+            <span class="badge">FAQ</span>
+          </div>
+          <ul class="faq-list">
+            <li class="faq-item">
+              <div class="faq-question">
+                <span class="q">Why is my Wi‑Fi connected but I have no internet?</span>
+                <span class="icon">▾</span>
+              </div>
+              <div class="faq-answer">
+                Restart your router and modem, then test a different device. If only one device is affected,
+                forget and re‑add the Wi‑Fi network on that device.
+              </div>
+            </li>
+            <li class="faq-item">
+              <div class="faq-question">
+                <span class="q">My laptop is very slow. What can I try?</span>
+                <span class="icon">▾</span>
+              </div>
+              <div class="faq-answer">
+                Close unused apps and browser tabs, restart the device, and ensure you have at least 10–15% free disk space.
+                If it’s still slow, run a malware scan.
+              </div>
+            </li>
+            <li class="faq-item">
+              <div class="faq-question">
+                <span class="q">An app keeps crashing. How do I fix it?</span>
+                <span class="icon">▾</span>
+              </div>
+              <div class="faq-answer">
+                Update the app, clear its cache (or temporary files), and restart your device. If the issue persists,
+                reinstall the app and check for OS updates.
+              </div>
+            </li>
+            <li class="faq-item">
+              <div class="faq-question">
+                <span class="q">Is remote access support safe?</span>
+                <span class="icon">▾</span>
+              </div>
+              <div class="faq-answer">
+                Only allow remote access from trusted technicians, and only for the duration of the session.
+                We never store your passwords or files.
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="panel" id="status" aria-label="System status">
+          <div class="panel-header">
+            <h3>Service status</h3>
+            <span class="badge">Live</span>
+          </div>
+          <ul class="status-list">
+            <li class="status-item">
+              <div class="status-label">
+                <span class="status-dot ok"></span>
+                <span>Support chat</span>
+              </div>
+              <span class="status-pill">Operational</span>
+            </li>
+            <li class="status-item">
+              <div class="status-label">
+                <span class="status-dot ok"></span>
+                <span>Remote assistance</span>
+              </div>
+              <span class="status-pill">Available</span>
+            </li>
+            <li class="status-item">
+              <div class="status-label">
+                <span class="status-dot warn"></span>
+                <span>Email ticketing</span>
+              </div>
+              <span class="status-pill">Minor delays</span>
+            </li>
+            <li class="status-item">
+              <div class="status-label">
+                <span class="status-dot ok"></span>
+                <span>Knowledge base</span>
+              </div>
+              <span class="status-pill">Online</span>
+            </li>
+          </ul>
+        </section>
+      </aside>
+    </section>
+
+    <!-- Quick fixes section -->
+    <section class="quick-fixes" id="quick-fixes" aria-label="Quick fixes">
+      <div class="quick-fixes-left">
+        <div class="section-header">
+          <div>
+            <h2>Guided quick fixes</h2>
+            <p>
+              Choose the issue that best matches what you’re seeing. Each card gives you a short,
+              safe sequence of steps you can try immediately.
+            </p>
+          </div>
+          <div class="filter-tabs" aria-label="Filter quick fixes">
+            <button class="active" type="button">All</button>
+            <button type="button">Network</button>
+            <button type="button">Performance</button>
+            <button type="button">Apps</button>
+          </div>
+        </div>
+
+        <div class="quick-fix-grid">
+          <!-- Wi-Fi -->
+          <article class="quick-fix-card" tabindex="0">
+            <div class="quick-fix-label">
+              <span class="dot"></span>
+              Network • Home / Office
+            </div>
+            <h3 class="quick-fix-title">Wi‑Fi connected, but no internet</h3>
+            <p class="quick-fix-body">
+              Use this when your device shows full Wi‑Fi bars but websites or apps won’t load.
+            </p>
+            <div class="quick-fix-steps">
+              <span class="step-tag">Step 1</span>
+              Restart your router and modem (unplug for 30 seconds).
+              <br />
+              <span class="step-tag">Step 2</span>
+              Test another device on the same network.
+              <br />
+              <span class="step-tag">Step 3</span>
+              On the affected device, “Forget” the Wi‑Fi network and reconnect.
+            </div>
+            <div class="quick-fix-meta">
+              <span class="time">⏱ 5–8 minutes</span>
+              <span class="difficulty">Difficulty: Easy</span>
+            </div>
+          </article>
+
+          <!-- Slow computer -->
+          <article class="quick-fix-card" tabindex="0">
+            <div class="quick-fix-label">
+              <span class="dot"></span>
+              Performance • Windows / macOS
+            </div>
+            <h3 class="quick-fix-title">Computer is slow or freezing</h3>
+            <p class="quick-fix-body">
+              Ideal when everything feels sluggish, apps take ages to open, or your cursor keeps spinning.
+            </p>
+            <div class="quick-fix-steps">
+              <span class="step-tag">Step 1</span>
+              Close unused apps and browser tabs.
+              <br />
+              <span class="step-tag">Step 2</span>
+              Restart the computer and install pending system updates.
+              <br />
+              <span class="step-tag">Step 3</span>
+              Check free disk space and remove large unused files.
+            </div>
+            <div class="quick-fix-meta">
+              <span class="time">⏱ 10–15 minutes</span>
+              <span class="difficulty">Difficulty: Medium</span>
+            </div>
+          </article>
+
+          <!-- App crashing -->
+          <article class="quick-fix-card" tabindex="0">
+            <div class="quick-fix-label">
+              <span class="dot"></span>
+              Apps • Desktop / Mobile
+            </div>
+            <h3 class="quick-fix-title">App keeps crashing or won’t open</h3>
+            <p class="quick-fix-body">
+              Use this when a specific app closes by itself, freezes, or refuses to start.
+            </p>
+            <div class="quick-fix-steps">
+              <span class="step-tag">Step 1</span>
+              Update the app from the official store or vendor site.
+              <br />
+              <span class="step-tag">Step 2</span>
+              Clear the app cache or temporary files.
+              <br />
+              <span class="step-tag">Step 3</span>
+              Reinstall the app and restart your device.
+            </div>
+            <div class="quick-fix-meta">
+              <span class="time">⏱ 6–12 minutes</span>
+              <span class="difficulty">Difficulty: Easy</span>
+            </div>
+          </article>
+
+          <!-- Printer offline -->
+          <article class="quick-fix-card" tabindex="0">
+            <div class="quick-fix-label">
+              <span class="dot"></span>
+              Devices • Printer
+            </div>
+            <h3 class="quick-fix-title">Printer shows “offline” or won’t print</h3>
+            <p class="quick-fix-body">
+              Perfect when your printer is powered on but your computer says it’s offline.
+            </p>
+            <div class="quick-fix-steps">
+              <span class="step-tag">Step 1</span>
+              Power‑cycle the printer and check for error lights.
+              <br />
+              <span class="step-tag">Step 2</span>
+              Ensure the printer and computer are on the same Wi‑Fi network.
+              <br />
+              <span class="step-tag">Step 3</span>
+              Re‑add the printer from your system’s printer settings.
+            </div>
+            <div class="quick-fix-meta">
+              <span class="time">⏱ 8–12 minutes</span>
+              <span class="difficulty">Difficulty: Medium</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Contact / escalation -->
+      <aside class="quick-fixes-right" id="contact">
+        <section class="panel" aria-label="Escalate to support">
+          <div class="panel-header">
+            <h3>Need deeper help?</h3>
+            <span class="badge">Escalation</span>
+          </div>
+          <p style="font-size: 0.8rem; color: #d1d5db; margin-bottom: 0.6rem;">
+            If the quick fixes didn’t solve your issue, you can open a ticket or start a live session.
+            The more detail you share, the faster we can help.
+          </p>
+          <ul style="list-style: none; padding-left: 0; font-size: 0.78rem; color: #9ca3af;">
+            <li style="margin-bottom: 0.35rem;">
+              • Describe what you were doing right before the issue started.
+            </li>
+            <li style="margin-bottom: 0.35rem;">
+              • Include screenshots or error messages if possible.
+            </li>
+            <li style="margin-bottom: 0.35rem;">
+              • Tell us how often it happens (once, sometimes, always).
+            </li>
+          </ul>
+          <div style="display: flex; gap: 0.6rem; margin-top: 0.8rem; flex-wrap: wrap;">
+            <button
+              type="button"
+              onclick="openSupportChat()"
+              style="
+                border-radius: 999px;
+                border: 1px solid rgba(37, 99, 235, 0.9);
+                background: linear-gradient(135deg, #3b82f6, #2563eb);
+                color: #e5e7eb;
+                padding: 0.45rem 1rem;
+                font-size: 0.8rem;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                box-shadow: 0 14px 35px rgba(37, 99, 235, 0.7);
+              "
+            >
+              <span>💬</span>
+              Start live chat
+            </button>
+            <button
+              type="button"
+              style="
+                border-radius: 999px;
+                border: 1px solid rgba(55, 65, 81, 0.9);
+                background: rgba(15, 23, 42, 0.9);
+                color: #e5e7eb;
+                padding: 0.45rem 0.9rem;
+                font-size: 0.8rem;
+                cursor: pointer;
+              "
+            >
+              📧 Submit a ticket
+            </button>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> TechEase Support Center. All rights reserved.</span>
+    <span>
+      <a href="#">Privacy</a> •
+      <a href="#">Terms</a> •
+      <a href="#">Status page</a>
+    </span>
+  </footer>
+
+  <!-- Chat widget launcher (your widget is loaded from /widget.ja) -->
+  <div class="chat-hint" aria-label="Chat widget launcher">
+    <div class="chat-hint-bubble">
+      <strong>Need a human?</strong><br />
+      Click the blue bubble to open the support chat widget.
+    </div>
+    <button class="chat-hint-button" type="button" onclick="openSupportChat()">
+      💬
+    </button>
+  </div>
+
+  <!-- Your chat widget script -->
+  <script src="/widget.js" async></script>
+
+  <script>
+    // Simple helpers for scrolling and chat opening.
+    function scrollToQuickFixes() {
+      const el = document.getElementById("quick-fixes");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function openSupportChat() {
+
+      if (window.SupportWidget && typeof window.SupportWidget.open === "function") {
+        window.SupportWidget.open();
+      } else {
+        
+      }
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
