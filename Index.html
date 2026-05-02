@@ -1,247 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>NovaTech Technical Support</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="NovaTech Technical Support – troubleshooting, diagnostics, and technical documentation." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechFix Support</title>
 
-  <style>
-    /* ——— STYLES REMOVED FOR BREVITY ———
-       You can paste your original CSS here exactly as it was.
-       Nothing in the CSS needs to change.
-    */
-  </style>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f6f8;
+    color: #333;
+}
+
+header {
+    background: #0d1b2a;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+.section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.qa {
+    margin-bottom: 20px;
+}
+
+button {
+    background: #1b263b;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #415a77;
+}
+
+.hidden {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background: #eef;
+    border-radius: 6px;
+}
+
+.step {
+    margin-bottom: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #0d1b2a;
+    color: white;
+    margin-top: 30px;
+}
+</style>
 </head>
 
 <body>
-  <header>
-    <div class="nav-inner">
-      <div class="brand">
-        <div class="brand-logo"><span>N</span></div>
-        <div class="brand-text">
-          <strong>NovaTech Technical Support</strong>
-          <small>Diagnostics • Troubleshooting • Documentation</small>
-        </div>
-      </div>
 
-      <nav class="nav-links">
-        <a href="#instant-answers">Instant answers</a>
-        <a href="#faq">Troubleshooting</a>
-        <a href="#kb">Knowledge base</a>
-        <a href="#contact">Contact</a>
-        <a href="#status">System status</a>
-        <a href="#" class="primary-link">Open a ticket</a>
-      </nav>
-    </div>
-  </header>
+<header>
+<h1>TechFix Support</h1>
+<p>Diagnose first. Fix properly.</p>
+</header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-left">
-        <div class="hero-pill">
-          <div class="hero-pill-dot"></div>
-          Technical Support • Hardware • Software • Networking
-        </div>
+<div class="container">
 
-        <h1 class="hero-title">
-          Reliable <span>technical support</span> for all NovaTech products.
-        </h1>
+<!-- QUICK DIAGNOSTICS -->
+<div class="section">
+<h2>⚡ Quick Diagnostics</h2>
 
-        <p class="hero-subtitle">
-          Find instant answers, troubleshooting steps, and detailed technical
-          documentation for NovaTech devices, software, and enterprise systems.
-        </p>
+<div class="qa">
+<strong>💻 Computer is slow</strong><br>
+1. Open Task Manager → High CPU/RAM?<br>
+2. Check storage (low free space causes slowdown)<br>
+3. Restart system<br>
 
-        <!-- ——— INSTANT ANSWERS ONLY ——— -->
-        <div class="instant-answers" id="instant-answers">
-          <div class="instant-header">
-            <div class="instant-header-left">
-              <div class="instant-badge"><span>⚡</span>Instant answers</div>
-              <span>Common technical issues solved fast.</span>
-            </div>
-            <div class="instant-header-right">
-              Click any card to view the full guide.
-            </div>
-          </div>
+<button onclick="toggle('slow')">More checks</button>
+<div id="slow" class="hidden">
+<div class="step">• Check temperatures (overheating = throttling)</div>
+<div class="step">• Disable startup programs</div>
+<div class="step">• Scan for malware</div>
+<div class="step">• Consider hardware limits (RAM/CPU/drive age)</div>
+</div>
+</div>
 
-          <div class="instant-grid">
-            <article class="instant-card">
-              <div class="instant-card-title">
-                <div>Device won't power on</div>
-                <div class="instant-card-tag">Hardware</div>
-              </div>
-              <div class="instant-card-answer">
-                1. Hold the power button for 10 seconds.<br />
-                2. Check the power cable and outlet.<br />
-                3. Remove accessories and try again.
-              </div>
-            </article>
+<div class="qa">
+<strong>🌐 Internet not working</strong><br>
 
-            <article class="instant-card">
-              <div class="instant-card-title">
-                <div>Wi‑Fi connected but no internet</div>
-                <div class="instant-card-tag">Networking</div>
-              </div>
-              <div class="instant-card-answer">
-                1. Restart your router.<br />
-                2. Flush DNS: <code>ipconfig /flushdns</code>.<br />
-                3. Check if other devices have the same issue.
-              </div>
-            </article>
+1. Try another website or app<br>
+→ One fails = service issue<br><br>
 
-            <article class="instant-card">
-              <div class="instant-card-title">
-                <div>Software keeps crashing</div>
-                <div class="instant-card-tag">Software</div>
-              </div>
-              <div class="instant-card-answer">
-                1. Update to the latest version.<br />
-                2. Clear the application cache.<br />
-                3. Check system logs for error codes.
-              </div>
-            </article>
+2. Test another device on same network<br>
+→ Only your device = device problem<br>
+→ All devices = network or ISP<br><br>
 
-            <article class="instant-card">
-              <div class="instant-card-title">
-                <div>Overheating issues</div>
-                <div class="instant-card-tag">Thermals</div>
-              </div>
-              <div class="instant-card-answer">
-                1. Ensure vents are not blocked.<br />
-                2. Clean dust from fans.<br />
-                3. Update firmware for thermal fixes.
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
+3. Restart your device<br>
+4. Check Wi-Fi or cable connection<br>
 
-      <!-- ——— RIGHT SIDE PANELS (unchanged) ——— -->
-      <aside class="hero-right">
-        <section class="panel" id="status">
-          <div class="panel-header">
-            <div>
-              <div class="panel-title">
-                <div class="panel-title-pill">◎</div>
-                System status
-              </div>
-              <div class="panel-subtitle">
-                Live view of core services across regions.
-              </div>
-            </div>
-            <div class="panel-badges">
-              <div class="panel-badge highlight">All systems operational</div>
-              <div class="panel-badge">Updated just now</div>
-            </div>
-          </div>
+<button onclick="toggle('net')">More options</button>
 
-          <div class="system-status">
-            <div class="status-card">
-              <div class="status-card-header">
-                <div class="status-card-title">Authentication</div>
-                <div class="status-indicator status-ok">
-                  <div class="status-indicator-dot"></div>
-                  Healthy
-                </div>
-              </div>
-              <div class="status-card-body">
-                No incidents reported.
-              </div>
-            </div>
+<div id="net" class="hidden">
+<div class="step"><strong>Low-risk checks:</strong></div>
+<div class="step">• Restart router (if all devices affected)</div>
+<div class="step">• Move closer to router (signal issue)</div>
+<div class="step">• Check ISP outage</div>
 
-            <div class="status-card">
-              <div class="status-card-header">
-                <div class="status-card-title">API Gateway</div>
-                <div class="status-indicator status-ok">
-                  <div class="status-indicator-dot"></div>
-                  Healthy
-                </div>
-              </div>
-              <div class="status-card-body">
-                Normal performance.
-              </div>
-            </div>
+<div class="step"><strong>Advanced (only if confident):</strong></div>
+<div class="step">• Check IP address status</div>
+<div class="step">• Adjust DNS settings</div>
+<div class="step">• Reset network configuration</div>
+</div>
+</div>
 
-            <div class="status-card">
-              <div class="status-card-header">
-                <div class="status-card-title">Realtime Sync</div>
-                <div class="status-indicator status-ok">
-                  <div class="status-indicator-dot"></div>
-                  Healthy
-                </div>
-              </div>
-              <div class="status-card-body">
-                All regions stable.
-              </div>
-            </div>
-          </div>
-        </section>
+<div class="qa">
+<strong>📱 App crashing</strong><br>
+1. Restart app/device<br>
+2. Check for recent updates or bugs<br>
 
-        <section class="panel">
-          <div class="panel-header">
-            <div>
-              <div class="panel-title">
-                <div class="panel-title-pill">?</div>
-                Quick actions
-              </div>
-              <div class="panel-subtitle">
-                Common support workflows.
-              </div>
-            </div>
-          </div>
+<button onclick="toggle('app')">More checks</button>
+<div id="app" class="hidden">
+<div class="step">• Clear cache/data</div>
+<div class="step">• Reinstall app</div>
+<div class="step">• Check compatibility</div>
+<div class="step">• Look for known issues</div>
+</div>
+</div>
 
-          <div class="quick-links">
-            <button class="quick-link">
-              <div class="quick-link-title">
-                <div>Reset password / 2FA</div>
-                <span>↗</span>
-              </div>
-            </button>
+<div class="qa">
+<strong>🔥 Overheating</strong><br>
+1. Ensure airflow is not blocked<br>
+2. Close intensive apps<br>
 
-            <button class="quick-link">
-              <div class="quick-link-title">
-                <div>Report a security issue</div>
-                <span>↗</span>
-              </div>
-            </button>
+<button onclick="toggle('heat')">More checks</button>
+<div id="heat" class="hidden">
+<div class="step">• Clean dust from vents</div>
+<div class="step">• Check fan operation</div>
+<div class="step">• Avoid soft surfaces</div>
+<div class="step">• Advanced: replace thermal paste</div>
+</div>
+</div>
 
-            <button class="quick-link">
-              <div class="quick-link-title">
-                <div>Check device drivers</div>
-                <span>↗</span>
-              </div>
-            </button>
+</div>
 
-            <button class="quick-link">
-              <div class="quick-link-title">
-                <div>Download software</div>
-                <span>↗</span>
-              </div>
-            </button>
-          </div>
-        </section>
-      </aside>
-    </section>
+<!-- GUIDED TROUBLESHOOTING -->
+<div class="section">
+<h2>🧠 Guided Troubleshooting</h2>
 
-    <!-- ——— TROUBLESHOOTING, KB, CONTACT SECTIONS ——— -->
-    <!-- You can paste your original sections here unchanged. -->
-  </main>
+<div class="qa">
+<strong>Start diagnosing your issue</strong><br>
+<button onclick="toggle('guide')">Start</button>
 
-  <footer>
-    <div class="footer-links">
-      <a href="#faq">Troubleshooting</a>
-      <a href="#kb">Docs</a>
-      <a href="#contact">Support channels</a>
-      <a href="#status">Status</a>
-    </div>
-    <div class="footer-meta">
-      <span>Support center v2.3</span>
-      <span>Technical support division</span>
-    </div>
-  </footer>
+<div id="guide" class="hidden">
 
-  <!-- Your existing widget -->
-  <script src="/widget.js" async></script>
+<div class="step"><strong>Step 1:</strong> Does restarting fix it?</div>
+<div class="step">→ Yes: temporary software issue</div>
+<div class="step">→ No: continue</div>
+
+<div class="step"><strong>Step 2:</strong> Is it one app or everything?</div>
+<div class="step">→ One app: app-specific problem</div>
+<div class="step">→ System-wide: continue</div>
+
+<div class="step"><strong>Step 3:</strong> Any heat, noise, or lag spikes?</div>
+<div class="step">→ Yes: possible hardware issue</div>
+<div class="step">→ No: likely software/config issue</div>
+
+<div class="step"><strong>Step 4:</strong> Did it start after a change?</div>
+<div class="step">→ Yes: undo/update/rollback</div>
+<div class="step">→ No: deeper diagnosis needed</div>
+
+</div>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 TechFix Support</p>
+</footer>
+
+<script>
+function toggle(id) {
+    var el = document.getElementById(id);
+    el.classList.toggle("hidden");
+}
+</script>
+
 </body>
 </html>
